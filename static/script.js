@@ -267,7 +267,7 @@ async function runDispute() {
 
         // Show temporary message
         document.getElementById("outputBox").innerText =
-            "⏳ Starting investigation...";
+            "⏳ Investigating ...";
 
         // Start async investigation
         const res = await fetch("/dispute/run", {

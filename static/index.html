@@ -1,64 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dispute AI Engine</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css">
-<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered payment dispute resolution engine with real-time analysis and intelligent decision making">
+    <meta name="keywords" content="dispute resolution, AI, payment gateway, fraud detection, automated analysis">
+    <meta name="author" content="Payment Gateway Dispute Resolution Team">
+    
+    <title>Payment Gateway Dispute Resolution AI Engine</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    
+    <!-- Theme detection -->
+    <script>
+        // Remove no-js class and add js support detection
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 
 <body>
-<div id="spinner" class="spinner hidden"></div>
-
-<!-- Top Bar -->
-<div class="topbar">
-    <h1>💳 Dispute AI Engine</h1>
-
-    <!-- Theme Toggle -->
-    <div class="theme-toggle-container">
-    <button id="themeToggle" class="theme-icon" onclick="toggleTheme()">🌙</button>
-</div>
-</div>
-
-<!-- Main Container -->
-<div class="container">
-
-    <!-- Action Buttons -->
-    <div class="actions">
-        <button onclick="generateCase()">Generate Case</button>
-        <button onclick="runDispute()">Run Investigation</button>
+    <!-- Loading Spinner -->
+    <div id="spinner" class="spinner hidden" role="status" aria-label="Loading...">
+        <span class="sr-only">Processing...</span>
     </div>
 
-    <!-- Content Grid -->
-    <div class="resizable-container">
-        <!-- Input Panel -->
-        <div class="card resizable-panel" id="inputPanel">
-            <h2>📦 Input Case Data</h2>
-            <pre id="inputBox" class="box">Click <i><b>"Generate Case"</b></i> to see mock-up input data ...</pre>
+    <!-- Header -->
+    <header class="topbar" role="banner">
+        <div class="topbar-content">
+            <div class="brand">
+                <h1 class="brand-title">
+                    <span class="brand-icon" aria-hidden="true">💳</span>
+                    <span class="brand-text">Payment Gateway Dispute Resolution</span>
+                </h1>
+                <p class="brand-subtitle">AI-Powered Analysis & Decision Engine</p>
+            </div>
+            
+            <!-- Theme Toggle -->
+            <nav class="theme-nav" role="navigation" aria-label="Theme controls">
+                <div class="theme-toggle-container">
+                    <button 
+                        id="themeToggle" 
+                        class="theme-icon" 
+                        onclick="toggleTheme()"
+                        aria-label="Toggle theme"
+                        title="Switch between light and dark theme"
+                        aria-pressed="false">
+                        <span class="theme-icon-text" aria-hidden="true">🌙</span>
+                    </button>
+                </div>
+            </nav>
         </div>
+    </header>
 
-        <!-- Draggable Divider -->
-        <div class="divider" id="divider">
-            <div class="divider-handle"></div>
+    <!-- Main Content -->
+    <main class="container" role="main">
+        <!-- Action Section -->
+        <section class="actions-section" aria-labelledby="actions-heading">
+            <h2 id="actions-heading" class="sr-only">Dispute Analysis Actions</h2>
+            <div class="actions">
+                <button 
+                    onclick="generateCase()" 
+                    class="btn btn-primary"
+                    aria-label="Generate sample dispute case data"
+                    title="Create a sample dispute case for analysis">
+                    <span class="btn-icon" aria-hidden="true">🎲</span>
+                    <span class="btn-text">Generate Case Data</span>
+                </button>
+                <button 
+                    onclick="runDispute()" 
+                    class="btn btn-secondary"
+                    aria-label="Start AI investigation of the dispute"
+                    title="Begin AI-powered dispute analysis">
+                    <span class="btn-icon" aria-hidden="true">🔍</span>
+                    <span class="btn-text">Run Investigation</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="content-section" aria-labelledby="content-heading">
+            <h2 id="content-heading" class="sr-only">Dispute Analysis Content</h2>
+            <div class="resizable-container">
+                <!-- Input Panel -->
+                <article class="card resizable-panel" id="inputPanel" role="region" aria-labelledby="input-heading">
+                    <header class="card-header">
+                        <h3 id="input-heading" class="card-title">
+                            <span class="card-icon" aria-hidden="true">📦</span>
+                            Input Case Data
+                        </h3>
+                        <div class="card-actions">
+                            <button 
+                                onclick="copyInputData()" 
+                                class="btn btn-icon"
+                                aria-label="Copy input data to clipboard"
+                                title="Copy input data">
+                                <span aria-hidden="true">📋</span>
+                            </button>
+                        </div>
+                    </header>
+                    <div class="card-content">
+                        <div id="inputBox" class="box" role="log" aria-live="polite">
+                            <span class="placeholder-text" style="text-align: left !important; display: block !important; width: 100% !important; direction: ltr !important;">Click <strong>"Generate Case"</strong> to see sample dispute data...</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Draggable Divider -->
+                <div class="divider" id="divider" role="separator" aria-label="Resize panels">
+                    <div class="divider-handle" aria-hidden="true">
+                        <span class="divider-icon">⋮</span>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <article class="card resizable-panel" id="outputPanel" role="region" aria-labelledby="output-heading">
+                    <header class="card-header">
+                        <h3 id="output-heading" class="card-title">
+                            <span class="card-icon" aria-hidden="true">🧠</span>
+                            AI Decision Analysis
+                        </h3>
+                        <div class="card-actions">
+                            <button 
+                                onclick="copyOutputData()" 
+                                class="btn btn-icon"
+                                aria-label="Copy AI analysis to clipboard"
+                                title="Copy analysis results">
+                                <span aria-hidden="true">📋</span>
+                            </button>
+                        </div>
+                    </header>
+                    <div class="card-content">
+                        <div id="outputBox" class="box" role="log" aria-live="polite">
+                            <span class="placeholder-text" style="text-align: left !important; display: block !important; width: 100% !important; direction: ltr !important;">Initiate Investigation to view AI Engine Analysis...</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-text">
+                <span class="footer-brand">Payment Gateway Dispute Resolution</span>
+                <span class="footer-separator">•</span>
+                <span class="footer-version">v1.0</span>
+                <span class="footer-separator">•</span>
+                <span class="footer-status">AI-Powered Analysis</span>
+            </p>
         </div>
+    </footer>
 
-        <!-- Output Panel -->
-        <div class="card resizable-panel" id="outputPanel">
-            <h2>🧠 AI Decision</h2>
-            <pre id="outputBox" class="box">Initiate Investigation to view AI Engine Analysis ...</pre>
-        </div>
-    </div>
-
-</div>
-
-<!-- JS -->
-<script src="/static/script.js" defer></script>
-
+    <!-- JavaScript -->
+    <script src="/static/script.js" defer></script>
+    
+    <!-- Additional functionality script -->
+    <script>
+        // Copy to clipboard functionality
+        function copyInputData() {
+            const inputBox = document.getElementById('inputBox');
+            navigator.clipboard.writeText(inputBox.textContent).then(() => {
+                showToast('Input data copied to clipboard!');
+            });
+        }
+        
+        function copyOutputData() {
+            const outputBox = document.getElementById('outputBox');
+            navigator.clipboard.writeText(outputBox.textContent).then(() => {
+                showToast('Analysis results copied to clipboard!');
+            });
+        }
+        
+        // Toast notification system
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'polite');
+            
+            document.body.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
