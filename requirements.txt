@@ -1,0 +1,57 @@
+# ----------------------------
+# ⚡ FastAPI + Server
+# ----------------------------
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+
+# ----------------------------
+# 🧠 LangGraph / LangChain
+# ----------------------------
+langgraph
+langchain
+langchain-core
+
+# Optional (if you later add tools / agents)
+langchain-community
+
+# ----------------------------
+# 📦 Qdrant Vector DB
+# ----------------------------
+qdrant-client
+
+# ----------------------------
+# 🧠 LLM Integration (Mistral via HTTP/Ollama)
+# ----------------------------
+requests
+
+# Optional OpenAI-compatible fallback
+openai
+
+# ----------------------------
+# 🧪 Data / Utilities
+# ----------------------------
+numpy
+pandas
+python-dateutil
+
+# ----------------------------
+# 🔐 Validation / Config
+# ----------------------------
+pydantic-settings
+
+# ----------------------------
+# 🧾 Logging / Observability (optional but recommended)
+# ----------------------------
+loguru
+# ----------------------------
+# 🧪 Synthetic data generation
+# ----------------------------
+faker
+
+# ----------------------------
+# ⚙️ Dev tools (optional)
+# ----------------------------
+httpx
+pytest

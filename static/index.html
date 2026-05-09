@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dispute AI Engine</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+</head>
+
+<body>
+<div id="spinner" class="spinner hidden"></div>
+
+<!-- Top Bar -->
+<div class="topbar">
+    <h1>💳 Dispute AI Engine</h1>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+    <button id="themeToggle" class="theme-icon" onclick="toggleTheme()">🌙</button>
+</div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+
+    <!-- Action Buttons -->
+    <div class="actions">
+        <button onclick="generateCase()">Generate Case</button>
+        <button onclick="runDispute()">Run Investigation</button>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="resizable-container">
+        <!-- Input Panel -->
+        <div class="card resizable-panel" id="inputPanel">
+            <h2>📦 Input Case Data</h2>
+            <pre id="inputBox" class="box">Click <i><b>"Generate Case"</b></i> to see mock-up input data ...</pre>
+        </div>
+
+        <!-- Draggable Divider -->
+        <div class="divider" id="divider">
+            <div class="divider-handle"></div>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="card resizable-panel" id="outputPanel">
+            <h2>🧠 AI Decision</h2>
+            <pre id="outputBox" class="box">Initiate Investigation to view AI Engine Analysis ...</pre>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="/static/script.js" defer></script>
+
+</body>
+</html>

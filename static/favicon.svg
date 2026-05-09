@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"></stop>
+      <stop offset="100%" stop-color="#22c55e"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#g)"></circle>
+
+  <!-- Shield -->
+  <path d="M32 14 L46 20 V32 C46 42 39 49 32 52 C25 49 18 42 18 32 V20 Z" fill="rgba(255,255,255,0.9)"></path>
+
+  <!-- Checkmark (decision approved/analysis) -->
+  <path d="M26 33 L30 37 L40 27" stroke="#1f2937" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Small node dots (AI/network hint) -->
+  <circle cx="22" cy="26" r="2" fill="#1f2937"></circle>
+  <circle cx="42" cy="26" r="2" fill="#1f2937"></circle>
+</svg>
